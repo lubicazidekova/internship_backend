@@ -1,0 +1,9 @@
+#docker run --rm -it -p 55432:5432 --name internship_postgres 
+#goodrequestcom/internship_postgres:latestst
+version: '3.8'
+
+services:
+  postgres:
+    image: 'goodrequestcom/internship_postgres:latest'
+    ports:
+      - "25432:5432"
