@@ -14,9 +14,13 @@ export class PatientModel extends Model {
     // foreign keys
     diagnoseID: number
 
+    getFullName(){
+        return [this.firstName,this.lastName].join(' ')
+    }
+
 }
 
-export default (sequelize: Sequelize, modelName: string) => {
+export default  (sequelize: Sequelize, modelName: string) => {
     PatientModel.init(
         {
             id: {
@@ -65,7 +69,7 @@ export default (sequelize: Sequelize, modelName: string) => {
             paranoid: false,
             timestamps: false,
             sequelize,
-            modelName,
+            modelName: 'Patient',
             tableName: 'patients',
         }
     );
