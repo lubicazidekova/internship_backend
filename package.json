@@ -4,7 +4,6 @@
   "description": "Project lessons of backend internship program",
   "main": "src/index.ts",
   "scripts": {
-
     "debug": "docker-compose rm --force -s -v postgres && docker-compose up --detach postgres && cross-env NODE_ENV=development nodemon --exec 'node --inspect -r dotenv/config -r ts-node/register src/index.ts' "
   },
   "author": "Ľubica Žideková <lubicazidekova@gmail.com>",
@@ -37,6 +36,7 @@
     "config": "3.3.7",
     "dayjs": "1.10.7",
     "express": "4.17.2",
+    "git": "^0.1.5",
     "joi": "17.4.2",
     "lodash": "4.17.21",
     "pg": "8.7.1",
