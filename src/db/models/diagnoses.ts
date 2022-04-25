@@ -44,6 +44,7 @@ export default (sequelize: Sequelize, modelName: string) => {
             sequelize,
             modelName,
             tableName: 'diagnoses',
+
         }
     );
     (DiagnoseModel as any).associate = (models: Models) =>
