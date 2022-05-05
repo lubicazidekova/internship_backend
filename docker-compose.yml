@@ -7,3 +7,7 @@ services:
     image: 'goodrequestcom/internship_postgres:latest'
     ports:
       - "25432:5432"
+  postgres_test:
+    image: 'goodrequestcom/internship_postgres:latest'
+    ports:
+      - "25432:5432"

@@ -1,5 +1,7 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 import {Models} from "../index";
+import {GENDER} from "../../utils/enums";
+import {DiagnoseModel} from "./diagnoses";
 
 export class PatientModel extends Model {
     id: number
@@ -9,14 +11,12 @@ export class PatientModel extends Model {
     weight:number
     height:number
     identificationNumber:string
-    gender:DataTypes.EnumDataType<any>
+    gender:GENDER
 
     // foreign keys
     diagnoseID: number
 
-    getFullName(){
-        return [this.firstName,this.lastName].join(' ')
-    }
+
 
 }
 
@@ -55,7 +55,7 @@ export default  (sequelize: Sequelize, modelName: string) => {
                 allowNull: false,
             },
             gender: {
-                type: DataTypes.ENUM,
+                type: DataTypes.ENUM(GENDER.FEMALE,GENDER.MALE),
                 allowNull: false,
             },
             // foreign keys
@@ -71,11 +71,13 @@ export default  (sequelize: Sequelize, modelName: string) => {
             sequelize,
             modelName: 'Patient',
             tableName: 'patients',
-        }
+        },
+
     );
 
     (PatientModel as any).associate = (models: Models) => {
         PatientModel.belongsTo(models.Diagnose, { foreignKey: 'diagnoseID' })
+        DiagnoseModel.belongsTo(models.Substance, { foreignKey: 'substanceID' })
     }
     return PatientModel
 }
